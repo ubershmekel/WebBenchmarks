@@ -103,6 +103,17 @@ def combine_results_with_meta(results_json, name_to_metadata):
     return test_type_to_language_perfs
 
 
+def seq_to_html(sequence):
+    rows_html = []
+    header_row = sequence[0]
+    line = '<thead><tr><th>' + '</th><th>'.join(header_row) + '</th></tr></thead>'
+    rows_html.append(line)
+    for row in sequence[1:]:
+        line = '<tr><td>' + '</td><td>'.join(row) + '</td></tr>'
+        rows_html.append(line)
+    table_html = '\n'.join(rows_html)
+    return table_html
+
 def main():
     results_json = json.load(open('results.json'))
     test_metadata_json = json.load(open('test_metadata.json'))
@@ -145,6 +156,7 @@ def main():
     headers = ['Language'] + sorted_test_types + ['Minimum']
     writer = csv.writer(csv_file, lineterminator='\n')
     writer.writerow(headers)
+    table = [headers]
     for lang, perfs in lang_to_results.items():
         row = [lang]
         performances = []
@@ -156,8 +168,15 @@ def main():
         if len(performances) != len(sorted_test_types):
             print("Bad row for: %s" % lang)
             continue
-        row = row + [str(i) for i in performances] + [min(performances)]
+        row = row + [str(i) for i in performances] + [str(min(performances))]
+        table.append(row)
         writer.writerow(row)
+
+    # output html
+    table_html = seq_to_html(table)
+    html = open('template.html').read()
+    html_out = html.replace('REPLACE_TABLE_HTML', table_html)
+    open('index.html', 'w').write(html_out)
 
 if __name__ == "__main__":
     main()
