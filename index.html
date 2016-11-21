@@ -13,16 +13,17 @@
     <body>
         <h1>Webserver Performance Summary (Round 13)</h1>
         <ul>
-            <li>Based on <a href="https://www.techempower.com/benchmarks/">TechEmpower's awesome benchmarks</a> this is a minimalistic summary.</li>
+            <li>Based on <a href="https://www.techempower.com/benchmarks/">TechEmpower's awesome benchmarks</a>, this is a minimalistic summary.</li>
             <li>I tried to remove any test with warnings or errors. Because failures in a toy benchmark are damning.</li>
             <li>For every test I took the worst performing instance (e.g. in the plaintext test I take whichever concurrency level performs worst). This is me assuming that your application may hit the worst case scenario so it's only fair to help you judge the language performance based on that. Also, it gives developers a clear place to start improving.</li>
-            <li>For every language I took the best performing test. It's max of the mins.</li>
+            <li>For every language I took the best performing test. It's a max of the mins.</li>
             <li>Source data from <a href="https://tfb-logs.techempower.com/">https://tfb-logs.techempower.com/</a></li>
             <li>Source <a href="https://github.com/ubershmekel/WebBenchmarks">https://github.com/ubershmekel/WebBenchmarks</a></li>
+            <li>Current version has a bug because of `fortune` and `query` having probably bogus data.</li>
         </ul>
 
 
-        <table id="myTable" class="tablesorter table table-hover">
+        <table id="myTable" class="tablesorter table">
             <thead><tr><th>Language</th><th>db</th><th>fortune</th><th>json</th><th>plaintext</th><th>query</th><th>update</th><th>Minimum</th></tr></thead>
 <tr><td>C</td><td>90</td><td>100</td><td>95</td><td>77</td><td>34</td><td>30</td><td>30</td></tr>
 <tr><td>C#</td><td>76</td><td>35</td><td>86</td><td>55</td><td>31</td><td>61</td><td>31</td></tr>
