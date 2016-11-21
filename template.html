@@ -1,19 +1,25 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>Programming Language Webserver Performance Summary</title>
-        <meta name="description" content="Based on TechEmpower benchmarks, which programming language is fastest in which benchmark">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <meta name="description" content="Based on TechEmpower benchmarks, which programming language is fastest in which benchmark" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+        <link rel="stylesheet" href="index.css" />
         <style>
-            body {
-                padding: 0 2em;
-            }
         </style>
+        <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <body>
-        <h1>Webserver Performance Summary</h1>
-        <p>Based on <a href="https://www.techempower.com/benchmarks/">TechEmpower's awesome benchmarks</a> this is a minimalistic summary</p>
+        <h1>Webserver Performance Summary (Round 13)</h1>
+        <ul>
+            <li>Based on <a href="https://www.techempower.com/benchmarks/">TechEmpower's awesome benchmarks</a> this is a minimalistic summary.</li>
+            <li>I tried to remove any test with warnings or errors. Because failures in a toy benchmark are damning.</li>
+            <li>For every test I took the worst performing instance (e.g. in the plaintext test I take whichever concurrency level performs worst). This is me assuming that your application may hit the worst case scenario so it's only fair to help you judge the language performance based on that. Also, it gives developers a clear place to start improving.</li>
+            <li>For every language I took the best performing test. It's max of the mins.</li>
+            <li>Source data from <a href="https://tfb-logs.techempower.com/">https://tfb-logs.techempower.com/</a></li>
+            <li>Source <a href="https://github.com/ubershmekel/WebBenchmarks">https://github.com/ubershmekel/WebBenchmarks</a></li>
+        </ul>
 
 
         <table id="myTable" class="tablesorter table">
@@ -23,13 +29,7 @@
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.27.8/js/jquery.tablesorter.min.js"></script>
-        <script>
-            $(function(){
-                // Default sort 7th column descending order
-                $("#myTable").tablesorter({sortList: [[7, 1]]});
-            });
-        </script>
-        
+        <script src="index.js"></script>
         
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

@@ -129,6 +129,7 @@ def main():
         name_to_metadata=name_to_metadata)
 
     pprint.pprint(test_type_to_language_perfs)
+    results_log = pprint.pformat(test_type_to_language_perfs)
 
     # normalize to 100% instead of requests per second
     normalized = {}
@@ -156,7 +157,7 @@ def main():
     headers = ['Language'] + sorted_test_types + ['Minimum']
     writer = csv.writer(csv_file, lineterminator='\n')
     writer.writerow(headers)
-    table = [headers]
+    table = []
     for lang, perfs in lang_to_results.items():
         row = [lang]
         performances = []
@@ -166,14 +167,19 @@ def main():
             col = int(perfs[typ].perf)
             performances.append(col)
         if len(performances) != len(sorted_test_types):
-            print("Bad row for: %s" % lang)
+            print("Removing row for lack of a test result: %s" % lang)
             continue
         row = row + [str(i) for i in performances] + [str(min(performances))]
         table.append(row)
+
+    # sort so the diffs are a bit more consistent
+    table = [headers] + sorted(table)
+    for row in table:
         writer.writerow(row)
 
     # output html
     table_html = seq_to_html(table)
+    table_html += "\n<!-- %s -->\n" % results_log
     html = open('template.html').read()
     html_out = html.replace('REPLACE_TABLE_HTML', table_html)
     open('index.html', 'w').write(html_out)

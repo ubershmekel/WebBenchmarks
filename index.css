@@ -1,0 +1,11 @@
+body {
+    padding: 0 2em;
+}
+
+th {
+    cursor: pointer;
+}
+
+.table-hover>tbody>tr:hover {
+    opacity: 0.8;
+}

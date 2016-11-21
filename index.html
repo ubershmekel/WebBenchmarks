@@ -1,52 +1,180 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>Programming Language Webserver Performance Summary</title>
-        <meta name="description" content="Based on TechEmpower benchmarks, which programming language is fastest in which benchmark">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <meta name="description" content="Based on TechEmpower benchmarks, which programming language is fastest in which benchmark" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+        <link rel="stylesheet" href="index.css" />
         <style>
-            body {
-                padding: 0 2em;
-            }
         </style>
+        <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <body>
-        <h1>Webserver Performance Summary</h1>
-        <p>Based on <a href="https://www.techempower.com/benchmarks/">TechEmpower's awesome benchmarks</a> this is a minimalistic summary</p>
+        <h1>Webserver Performance Summary (Round 13)</h1>
+        <ul>
+            <li>Based on <a href="https://www.techempower.com/benchmarks/">TechEmpower's awesome benchmarks</a> this is a minimalistic summary.</li>
+            <li>I tried to remove any test with warnings or errors. Because failures in a toy benchmark are damning.</li>
+            <li>For every test I took the worst performing instance (e.g. in the plaintext test I take whichever concurrency level performs worst). This is me assuming that your application may hit the worst case scenario so it's only fair to help you judge the language performance based on that. Also, it gives developers a clear place to start improving.</li>
+            <li>For every language I took the best performing test. It's max of the mins.</li>
+            <li>Source data from <a href="https://tfb-logs.techempower.com/">https://tfb-logs.techempower.com/</a></li>
+            <li>Source <a href="https://github.com/ubershmekel/WebBenchmarks">https://github.com/ubershmekel/WebBenchmarks</a></li>
+        </ul>
 
 
-        <table id="myTable" class="tablesorter table">
+        <table id="myTable" class="tablesorter table table-hover">
             <thead><tr><th>Language</th><th>db</th><th>fortune</th><th>json</th><th>plaintext</th><th>query</th><th>update</th><th>Minimum</th></tr></thead>
-<tr><td>C#</td><td>76</td><td>35</td><td>86</td><td>55</td><td>31</td><td>61</td><td>31</td></tr>
-<tr><td>JavaScript</td><td>73</td><td>32</td><td>75</td><td>10</td><td>100</td><td>37</td><td>10</td></tr>
 <tr><td>C</td><td>90</td><td>100</td><td>95</td><td>77</td><td>34</td><td>30</td><td>30</td></tr>
-<tr><td>PHP</td><td>56</td><td>26</td><td>47</td><td>0</td><td>30</td><td>30</td><td>0</td></tr>
-<tr><td>Elixir</td><td>54</td><td>24</td><td>54</td><td>9</td><td>23</td><td>93</td><td>9</td></tr>
-<tr><td>Python</td><td>73</td><td>28</td><td>72</td><td>9</td><td>19</td><td>33</td><td>9</td></tr>
-<tr><td>Haskell</td><td>87</td><td>39</td><td>82</td><td>28</td><td>20</td><td>8</td><td>8</td></tr>
+<tr><td>C#</td><td>76</td><td>35</td><td>86</td><td>55</td><td>31</td><td>61</td><td>31</td></tr>
 <tr><td>C++</td><td>100</td><td>47</td><td>100</td><td>100</td><td>40</td><td>82</td><td>40</td></tr>
+<tr><td>Clojure</td><td>82</td><td>36</td><td>80</td><td>38</td><td>30</td><td>23</td><td>23</td></tr>
 <tr><td>Dart</td><td>75</td><td>34</td><td>62</td><td>17</td><td>98</td><td>40</td><td>17</td></tr>
-<tr><td>Ur</td><td>88</td><td>41</td><td>92</td><td>33</td><td>13</td><td>21</td><td>13</td></tr>
+<tr><td>Elixir</td><td>54</td><td>24</td><td>54</td><td>9</td><td>23</td><td>93</td><td>9</td></tr>
+<tr><td>Go</td><td>93</td><td>39</td><td>86</td><td>89</td><td>38</td><td>68</td><td>38</td></tr>
 <tr><td>Groovy</td><td>70</td><td>26</td><td>45</td><td>3</td><td>30</td><td>33</td><td>3</td></tr>
+<tr><td>Haskell</td><td>87</td><td>39</td><td>82</td><td>28</td><td>20</td><td>8</td><td>8</td></tr>
 <tr><td>Java</td><td>91</td><td>41</td><td>99</td><td>90</td><td>44</td><td>100</td><td>41</td></tr>
+<tr><td>JavaScript</td><td>73</td><td>32</td><td>75</td><td>10</td><td>100</td><td>37</td><td>10</td></tr>
 <tr><td>Lua</td><td>86</td><td>40</td><td>80</td><td>43</td><td>29</td><td>35</td><td>29</td></tr>
+<tr><td>PHP</td><td>56</td><td>26</td><td>47</td><td>0</td><td>30</td><td>30</td><td>0</td></tr>
+<tr><td>Python</td><td>73</td><td>28</td><td>72</td><td>9</td><td>19</td><td>33</td><td>9</td></tr>
 <tr><td>Ruby</td><td>56</td><td>14</td><td>82</td><td>51</td><td>21</td><td>22</td><td>14</td></tr>
 <tr><td>Scala</td><td>86</td><td>29</td><td>82</td><td>68</td><td>20</td><td>29</td><td>20</td></tr>
-<tr><td>Clojure</td><td>82</td><td>36</td><td>80</td><td>38</td><td>30</td><td>23</td><td>23</td></tr>
-<tr><td>Go</td><td>93</td><td>39</td><td>86</td><td>89</td><td>38</td><td>68</td><td>38</td></tr>
+<tr><td>Ur</td><td>88</td><td>41</td><td>92</td><td>33</td><td>13</td><td>21</td><td>13</td></tr>
+<!-- {'db': {'C': results(name='onion-raw', perf=5620.066666666667),
+        'C#': results(name='aspnetcore-mvc-raw', perf=4756.0),
+        'C++': results(name='cpoll_cppsp-postgres-raw', perf=6229.933333333333),
+        'Clojure': results(name='luminus', perf=5131.733333333334),
+        'Dart': results(name='stream-mongodb-raw', perf=4726.2),
+        'Elixir': results(name='phoenix', perf=3366.733333333333),
+        'Erlang': results(name='elli', perf=1819.0666666666666),
+        'Go': results(name='fasthttp-postgresql-prefork', perf=5797.0),
+        'Groovy': results(name='grails', perf=4388.0),
+        'Haskell': results(name='servant', perf=5479.866666666667),
+        'Java': results(name='Revenj.JVM', perf=5702.333333333333),
+        'JavaScript': results(name='nodejs-mongodb-raw', perf=4577.066666666667),
+        'Lua': results(name='openresty', perf=5396.8),
+        'PHP': results(name='php-php5-raw', perf=3518.6),
+        'PHP5': results(name='slim-php5', perf=1187.3333333333333),
+        'Perl': results(name='dancer-raw', perf=2584.4666666666667),
+        'Python': results(name='bottle-mysql-raw', perf=4587.866666666667),
+        'Racket': results(name='racket-ws', perf=715.4666666666667),
+        'Ruby': results(name='sinatra-sequel', perf=3492.6),
+        'Scala': results(name='scruffy', perf=5369.466666666666),
+        'Ur': results(name='urweb-postgres', perf=5522.666666666667)},
+ 'fortune': {'C': results(name='lwan-sqlite', perf=13106.466666666667),
+             'C#': results(name='aspnetcore-middleware-raw', perf=4602.133333333333),
+             'C++': results(name='ulib-postgres', perf=6267.8),
+             'Clojure': results(name='luminus', perf=4836.066666666667),
+             'D': results(name='vibed', perf=4419.2),
+             'Dart': results(name='dart', perf=4564.8),
+             'Elixir': results(name='phoenix', perf=3251.4666666666667),
+             'Go': results(name='fasthttp', perf=5181.0),
+             'Groovy': results(name='grails', perf=3529.866666666667),
+             'Haskell': results(name='servant', perf=5130.0),
+             'Java': results(name='Revenj.JVM', perf=5484.733333333334),
+             'JavaScript': results(name='nodejs-mongodb-raw', perf=4245.4),
+             'Lua': results(name='openresty', perf=5314.6),
+             'PHP': results(name='php-php5-raw', perf=3425.6666666666665),
+             'Perl': results(name='kelp-mongodb', perf=2021.1333333333334),
+             'Python': results(name='flask-pypy-mysql-raw', perf=3759.2),
+             'Ruby': results(name='sinatra-sequel', perf=1856.1333333333334),
+             'Scala': results(name='play2-scala-slick', perf=3868.6666666666665),
+             'Ur': results(name='urweb-postgres', perf=5459.6)},
+ 'json': {'C': results(name='lwan', perf=16976.2),
+          'C#': results(name='Revenj', perf=15465.333333333334),
+          'C++': results(name='ulib-json', perf=17806.333333333332),
+          'Clojure': results(name='aleph', perf=14325.866666666667),
+          'Crystal': results(name='kemal', perf=11703.533333333333),
+          'D': results(name='vibed', perf=12826.333333333334),
+          'Dart': results(name='dart', perf=11045.866666666667),
+          'Elixir': results(name='elixir-cowboy', perf=9724.266666666666),
+          'Erlang': results(name='elli', perf=7165.266666666666),
+          'Go': results(name='fasthttp', perf=15362.333333333334),
+          'Groovy': results(name='grails', perf=8115.5),
+          'Haskell': results(name='wai', perf=14685.5625),
+          'Java': results(name='servlet3-cass', perf=17702.6),
+          'JavaScript': results(name='nodejs', perf=13519.4),
+          'Lua': results(name='openresty', perf=14267.133333333333),
+          'Nim': results(name='jester', perf=8467.533333333333),
+          'PHP': results(name='php', perf=8472.6),
+          'PHP5': results(name='slim-php5', perf=2172.9333333333334),
+          'Perl': results(name='web-simple', perf=5467.266666666666),
+          'Python': results(name='wsgi', perf=12865.733333333334),
+          'Racket': results(name='racket-ws', perf=1195.875),
+          'Ruby': results(name='ngx_mruby', perf=14701.133333333333),
+          'Scala': results(name='s-server', perf=14636.2),
+          'Ur': results(name='urweb', perf=16542.733333333334),
+          'rust': results(name='iron', perf=7645.2)},
+ 'plaintext': {'C': results(name='h2o', perf=513366.8),
+               'C#': results(name='aspnetcore', perf=366574.0),
+               'C++': results(name='ulib', perf=663456.9333333333),
+               'Clojure': results(name='aleph', perf=257340.0),
+               'Crystal': results(name='kemal', perf=29063.0),
+               'D': results(name='vibed', perf=63351.4),
+               'Dart': results(name='dart', perf=113422.33333333333),
+               'Elixir': results(name='elixir-cowboy', perf=64492.86666666667),
+               'Erlang': results(name='elli', perf=128934.46666666666),
+               'Go': results(name='fasthttp', perf=593754.8666666667),
+               'Groovy': results(name='grails', perf=22759.133333333335),
+               'Haskell': results(name='wai', perf=191649.0),
+               'Java': results(name='undertow', perf=602353.8666666667),
+               'JavaScript': results(name='nodejs', perf=66925.4375),
+               'Lua': results(name='openresty', perf=285742.625),
+               'PHP': results(name='laravel-hhvm', perf=1197.5333333333333),
+               'Perl': results(name='kelp', perf=4754.466666666666),
+               'Python': results(name='wheezyweb-py3', perf=64077.0),
+               'Ruby': results(name='ngx_mruby', perf=343285.13333333336),
+               'Rust': results(name='hyper', perf=21595.866666666665),
+               'Scala': results(name='colossus', perf=455431.4666666667),
+               'Ur': results(name='urweb', perf=222100.46666666667),
+               'rust': results(name='iron', perf=49363.0)},
+ 'query': {'C': results(name='h2o', perf=1507.6),
+           'C#': results(name='aspnetcore-mvc-raw', perf=1382.1333333333334),
+           'C++': results(name='treefrog-mongodb', perf=1785.0666666666666),
+           'Clojure': results(name='compojure-raw', perf=1334.2666666666667),
+           'Crystal': results(name='kemal', perf=47.6),
+           'Dart': results(name='redstone-mongodb', perf=4356.0),
+           'Elixir': results(name='phoenix', perf=1033.4),
+           'Erlang': results(name='cowboy', perf=727.0),
+           'Go': results(name='fasthttp-postgresql-prefork', perf=1685.2666666666667),
+           'Groovy': results(name='grails', perf=1329.6666666666667),
+           'Haskell': results(name='yesod-postgres', perf=918.2),
+           'Java': results(name='undertow-mongodb', perf=1952.4),
+           'JavaScript': results(name='hapi-mongodb', perf=4418.6),
+           'Lua': results(name='openresty', perf=1320.2),
+           'PHP': results(name='fat-free-raw', perf=1326.4666666666667),
+           'PHP5': results(name='slim-php5', perf=996.9333333333333),
+           'Perl': results(name='dancer-raw', perf=305.1333333333333),
+           'Python': results(name='tornado-postgresql-raw', perf=849.7333333333333),
+           'Racket': results(name='racket-ws', perf=88.13333333333334),
+           'Ruby': results(name='rack', perf=944.7333333333333),
+           'Scala': results(name='akka-http', perf=905.3333333333334),
+           'Ur': results(name='urweb-postgres', perf=583.2666666666667)},
+ 'update': {'C': results(name='h2o', perf=330.1333333333333),
+            'C#': results(name='aspnetcore-mvc-raw', perf=658.1333333333333),
+            'C++': results(name='ulib-mongodb', perf=877.9333333333333),
+            'Clojure': results(name='pedestal', perf=253.86666666666667),
+            'Dart': results(name='redstone-mongodb', perf=432.0),
+            'Elixir': results(name='phoenix', perf=997.6),
+            'Go': results(name='fasthttp-postgresql-prefork', perf=730.8),
+            'Groovy': results(name='grails', perf=351.8),
+            'Haskell': results(name='servant', perf=90.6),
+            'Java': results(name='Revenj.JVM', perf=1066.0),
+            'JavaScript': results(name='express-mongodb', perf=398.3333333333333),
+            'Lua': results(name='lapis', perf=373.2),
+            'PHP': results(name='php-php5-raw', perf=328.6),
+            'Python': results(name='web2py-optimized', perf=358.2),
+            'Ruby': results(name='rack', perf=240.2),
+            'Scala': results(name='akka-http', perf=310.53333333333336),
+            'Ur': results(name='urweb-postgres', perf=228.53333333333333)}} -->
+
         </table>
         
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.27.8/js/jquery.tablesorter.min.js"></script>
-        <script>
-            $(function(){
-                // Default sort 7th column descending order
-                $("#myTable").tablesorter({sortList: [[7, 1]]});
-            });
-        </script>
-        
+        <script src="index.js"></script>
         
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
